@@ -11,7 +11,25 @@ describe("App.vue", () => {
 
   it("shows filtered Restaurants when search query is entered", async () => {});
 
+  it('displays "View Restaurant Type" heading', () => {});
+
+  it('displays "Dine-in" button', () => {});
+
+  it('displays "Delivery" button', () => {});
+
+  it('displays "View All" button', () => {});
+
+  it('emits "view-all" event when "View All" button is clicked', async () => {});
+
+  it('emits "view-dine-in" event when "Dine-in" button is clicked', async () => {});
+
+  it('emits "view-delivery" event when "Delivery" button is clicked', async () => {});
+
   it("renders RestaurantDetailCard components for all Restaurants", () => {});
+
+  it("renders RestaurantDetailCard for each Delivery Restaurant", () => {});
+
+  it("renders RestaurantDetailCard for each Dine-in Restaurant", () => {});
 
   it("renders the RestaurantList component", () => {});
 

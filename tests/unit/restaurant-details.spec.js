@@ -5,8 +5,6 @@ describe("RestaurantDetail.vue", () => {
 
   it("displays cuisine name", () => {});
 
-  it("displays Since", () => {});
-
   it('emits "show-more" event when "View More" button is clicked', async () => {});
 
   it('emits "add-to-watchlist" event when "Add To Watchlist" button is clicked', async () => {});

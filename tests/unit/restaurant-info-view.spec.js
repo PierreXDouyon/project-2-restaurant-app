@@ -5,10 +5,18 @@ describe("RestaurantInfo.vue", () => {
 
   it("displays cuisine name", () => {});
 
-  it("displays Since", () => {});
+  it("displays Opened In:", () => {});
+
+  it("displays Restaurant address", () => {});
+
+  it("displays Restaurant phone number", () => {});
+
+  it("displays Restaurant website", () => {});
+
+  it("displays Restaurant rating", () => {});
   //
 
-  it("displays Restaurant description", () => {});
+  it("displays four Restaurant menu items", () => {});
   //
 
   it("displays availability status (open or closed)", () => {});

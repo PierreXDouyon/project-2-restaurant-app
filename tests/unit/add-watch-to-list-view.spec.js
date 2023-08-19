@@ -5,7 +5,13 @@ describe("AddWatchList.vue", () => {
 
   it('displays input elements for "Notes", "Watch list dropdown elements"', () => {});
 
+  it('displays a "Rating" input, with five empty stars', () => {});
+
+  it('emits "rating" event on star click', async () => {});
+
   it("updates notes data on input change", async () => {});
+
+  it("updates rating data on input change", async () => {});
 
   it('displays a "Watchlist" dropdown menu: 1-Watchlist, 2-Create a list, 2.a)list name input, 2.b) "Save list" Button', () => {});
 
