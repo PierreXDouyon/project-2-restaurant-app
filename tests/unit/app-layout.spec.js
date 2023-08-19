@@ -113,11 +113,12 @@ sql
 --------------------------------
 |       Main Dashboard         |
 |  ------------------------   |
-| |    Search: [Input]    |   |
+|  [View All/Dine-in/Delivery]|
+
+    Search: [Input] |   |
 | | [Search Filters]     |   |
 | | [Restaurant Cards]   |   |
 | | [View Options]      |   |
-| | [View All/Dine-in/Delivery]||
 |  ------------------------   |
 --------------------------------
 

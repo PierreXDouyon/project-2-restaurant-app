@@ -21,6 +21,8 @@ describe("AddWatchList.vue", () => {
 
   it('displays an "Add to watchlist" button', () => {});
 
+  it('updates restaurant details rating data on "Add to watchlist" button click', async () => {});
+
   it('emits " Restaurant name, Added to Watch list!" pop-up text event on "Add to Watch list" button click', async () => {});
 
   it('clears inputs on "Clear" button click', async () => {});
