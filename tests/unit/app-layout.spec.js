@@ -1,106 +1,178 @@
-Header.vue
+DeliveryNow.vue:
 
-+-------------------------------+
-| Logo & Title                  |
-+-------------------------------+
-| Search Input                  |
-+-------------------------------+
-| Hamburger Menu                |
-+-------------------------------+
+sql
 
+--------------------------------
+|     Restaurant Detail        |
+|  ------------------------   |
+| |    Search: [Input]    |   |
+| |  [Filter by Genre]   |   |
+| |                        |   |
+| | [Restaurant Cards]   |   |
+| |                        |   |
+| |  [Add To Watchlist]  |   |
+| |   [Delivery Icons]   |   |
+| |    [Delivery Now]    |   |
+|  ------------------------   |
+--------------------------------
 
-HomeView.vue
+ScrollToTop.vue:
 
-+-------------------------------+
-| Search Input & Button         |
-+-------------------------------+
-| Filter Buttons & View         |
-| Restaurant Cards              |
-| View More Button              |
-+-------------------------------+
+sql
 
-    
-Footer.vue
+--------------------------------
+|     Scroll to Top            |
+|  ------------------------   |
+| |        [Button]       |   |
+|  ------------------------   |
+--------------------------------
 
-+-------------------------------+
-| Copyright Information         |
-+-------------------------------+
-| Social Icons                  |
-+-------------------------------+
+RestaurantList.vue:
 
-MyWatchListView.vue
+lua
 
-+-------------------------------+
-| Search by List & Cuisine      |
-| Search & Clear Button         |
-+-------------------------------+
-| Watchlist Restaurants         |
-| Edit & Delete Buttons         |
-| Move Restaurant Button        |
-+-------------------------------+
+--------------------------------
+|      Restaurant List         |
+|  ------------------------   |
+| | [Restaurant Cards]   |   |
+|  ------------------------   |
+--------------------------------
 
-    
-ReservationView.vue
+RestaurantInfo.vue:
 
-+-------------------------------+
-| Restaurant Detail for         |
-| Reservation                   |
-+-------------------------------+
-| Dine-in & Seat Options        |
-| Reserve Now Button            |
-+-------------------------------+
+sql
 
+--------------------------------
+|      Restaurant Info         |
+|  ------------------------   |
+| |     Restaurant Name  |   |
+| |     Cuisine Name     |   |
+| |     Opened In:      |   |
+| |     Restaurant Image|   |
+| |     Address          |   |
+| |     Phone Number    |   |
+| |     Website          |   |
+| |     Rating            |   |
+| |     Menu Items      |   |
+| |     Availability    |   |
+| |     Dine-in/Delivery|   |
+| |     Add to Watchlist|   |
+|  ------------------------   |
+--------------------------------
 
-RestaurantDetail.vue
+RestaurantDetail.vue:
 
-+-------------------------------+
-| Restaurant Name               |
-+-------------------------------+
-| Restaurant Image              |
-+-------------------------------+
-| Cuisine Name                  |
-+-------------------------------+
-| View More & Add to Watchlist  |
-| Buy Reservations & Delivery   |
-    +------------------------------- +
-    
+sql
 
-RestaurantInfoView.vue
+--------------------------------
+|     Restaurant Detail        |
+|  ------------------------   |
+| |     Restaurant Name  |   |
+| |     Cuisine Name     |   |
+| |     Restaurant Image|   |
+| |   [View More Details]|   |
+| |   [Add To Watchlist]|   |
+| |   [Reservations]    |   |
+| |   [Delivery Now]    |   |
+|  ------------------------   |
+--------------------------------
 
-+-------------------------------+
-| Restaurant Details            |
-+-------------------------------+
-| Opened In & Address           |
-+-------------------------------+
-| Phone, Website & Rating       |
-+-------------------------------+
-| Menu Items & Availability     |
-+-------------------------------+
-| Add to Watchlist & Delivery   |
-+-------------------------------+
+Reservations.vue:
 
-    
-RestaurantList.vue
+lua
 
-+-------------------------------+
-| List of Restaurant Cards      |
-+-------------------------------+
+--------------------------------
+|         Reservations         |
+|  ------------------------   |
+| | [Restaurant Detail] |   |
+| |  Dine-in Options   |   |
+| |   Seat Options     |   |
+| |   [Reserve Now]   |   |
+|  ------------------------   |
+--------------------------------
 
-    
-ScrollToTop.vue
+MyWatchList.vue:
 
-+-------------------------------+
-| Scroll to Top Button          |
-+-------------------------------+
+sql
 
-    
-DeliveryNowView.vue
+--------------------------------
+|       My Watch List          |
+|  ------------------------   |
+| |   [Search Filters]   |   |
+| | [Watchlist Restaurants]|   |
+| |   [Edit/Delete/Move] |   |
+| |   [View More]         |   |
+| |   [Move to List]    |   |
+|  ------------------------   |
+--------------------------------
 
-+-------------------------------+
-| Search by Name & Genre        |
-| Search & Clear Button         |
-+-------------------------------+
-| Delivery Restaurant Cards     |
-| Add to Watchlist & Delivery   |
-| Icons & Delivery Now Button   |
-+-------------------------------+
+App.vue:
+
+sql
+
+--------------------------------
+|       Main Dashboard         |
+|  ------------------------   |
+| |    Search: [Input]    |   |
+| | [Search Filters]     |   |
+| | [Restaurant Cards]   |   |
+| | [View Options]      |   |
+| | [View All/Dine-in/Delivery]||
+|  ------------------------   |
+--------------------------------
+
+Header.vue:
+
+lua
+
+--------------------------------
+|          Header              |
+|  ------------------------   |
+| | [Logo] [Menu Items]  |   |
+|  ------------------------   |
+--------------------------------
+
+Footer.vue:
+
+lua
+
+--------------------------------
+|          Footer              |
+|  ------------------------   |
+| | [Copyright Info]    |   |
+| | [Social Media Icons]|   |
+|  ------------------------   |
+--------------------------------
+
+DeliveryNow.vue: (This wireframe includes some assumptions due to missing information)
+
+sql
+
+--------------------------------
+|  Delivery Restaurant Detail  |
+|  ------------------------   |
+| |    Search: [Input]    |   |
+| |  [Filter by Genre]   |   |
+| |                        |   |
+| | [Restaurant Cards]   |   |
+| |                        |   |
+| |  [Add To Watchlist]  |   |
+| |   [Delivery Icons]   |   |
+| |    [Delivery Now]    |   |
+|  ------------------------   |
+--------------------------------
+
+AddWatchList.vue: (Assumptions included)
+
+css
+
+--------------------------------
+|   Add Restaurant to Watchlist|
+|  ------------------------   |
+| |   Restaurant Details |   |
+| |   [Notes] [Rating]   |   |
+| |  [Watchlist Dropdown]|   |
+| |   [Add to Watchlist]|   |
+| |      [Clear]        |   |
+|  ------------------------   |
+--------------------------------
