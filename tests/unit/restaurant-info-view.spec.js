@@ -27,5 +27,5 @@ describe("RestaurantInfo.vue", () => {
 
   it('emits "select-Delivery" event when "Delivery Now" button is clicked', async () => {});
 
-  it('emits "select-Dine-in" event when "Buy reservations" button is clicked', async () => {});
+  it('emits "select-Dine-in" event when "Book reservations" button is clicked', async () => {});
 });
