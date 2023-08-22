@@ -1,4 +1,4 @@
-describe("App.vue", () => {
+describe("HomePageView.vue", () => {
   it("displays title and paragraph", () => {});
 
   it('renders the search input "Search by name" and "Search by cuisine"', () => {});
@@ -35,6 +35,15 @@ describe("App.vue", () => {
 
   it('shows more Restaurants when "View More" is clicked', async () => {});
 
+  it('handles search when SearchBar emits "search" event', async () => {});
+
+  it('displays the popup message under search input on search key inputting', async () => {});
+
+  it('displays the all restaurants on View All button clicking', async () => {});
+
+  it('displays the filtered restaurants on View Delivery button clicking', async () => {});
+
+  it('displays the filtered restaurants on View Dine-in button clicking', async () => {});
   // it('scrolls to the top when "Scroll Up" is clicked', async () => {
 
   // });

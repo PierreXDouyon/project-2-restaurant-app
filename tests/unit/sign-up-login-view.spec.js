@@ -1,5 +1,5 @@
-describe("DeliveryNow.vue", () => {
-  it("displays the h1 title for login", () => {});
+describe("SignUpLoginView.vue", () => {
+  it("displays the h1 title for singup / login", () => {});
 
   it("displays the paragraph for login", () => {});
 
@@ -14,8 +14,6 @@ describe("DeliveryNow.vue", () => {
   it("displays the button for login", () => {});
 
   it('emits "login" event when "Login" button is clicked', async () => {});
-
-  it("displays the h1 title for sign up", () => {});
 
   it("displays the paragraph for sign up", () => {});
 
@@ -36,4 +34,11 @@ describe("DeliveryNow.vue", () => {
   it("displays the error message for each individual input fields", () => {});
 
   it("displays the a confirmation message for successful login or successful sign-up", () => {});
+
+  it('displays the popup message for the authentication status on Signup button or Login button clicking', () => {});
+
+  it('displays the Google soical login button', () => {});
+
+  it('displays the Facebook soical login button', () => {});
+
 });

@@ -1,7 +1,4 @@
 describe("DeliveryNow.vue", () => {
-  //
-
-  //
 
   it("renders restaurantDetailCard for delivery restaurant", () => {});
 
@@ -20,4 +17,7 @@ describe("DeliveryNow.vue", () => {
   it('emits "restaurant-added" event on "Add To Watchlist" button click', async () => {});
 
   it('emits "delivery-started" event with the selected platform on delivery platform button click', async () => {});
+
+  it('diplays the popup message for the delivery status on delivery icon clicking', async () => {});
+
 });

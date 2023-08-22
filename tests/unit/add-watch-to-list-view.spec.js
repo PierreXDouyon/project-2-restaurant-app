@@ -31,5 +31,11 @@ describe("AddWatchList.vue", () => {
 
   it('re-displays the "Add to Watch list" button if any input elements are updated with button clicks', () => {});
 
+  it('displays the popup message on Save button clicking', () => {});
+
+  it('displays the CreatList on Creat List button clicking', () => {});
+
+  it('displays the popup message on Add New List button clicking', () => {});
+
   // ... Write tests for the save and clear methods and their behaviors ...
 });
