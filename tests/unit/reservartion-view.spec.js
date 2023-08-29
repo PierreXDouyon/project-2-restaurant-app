@@ -11,10 +11,9 @@ describe("Reservations.vue", () => {
 
   it('enables "Reserve Now" button when Select Dine-in has a value', async () => {});
 
-  it('diplays the popup message for the Reservation status on Reserve Now button clicking', async () => {});
+  it("diplays the popup message for the Reservation status on Reserve Now button clicking", async () => {});
 
-  it('diplays the Datetime title', async () => {});
+  it("diplays the Datetime title", async () => {});
 
-  it('diplays the Tables title title', async () => {});
-  
+  it("diplays the Tables title title", async () => {});
 });

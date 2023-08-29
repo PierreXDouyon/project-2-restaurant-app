@@ -1,5 +1,4 @@
 describe("DeliveryNow.vue", () => {
-
   it("renders restaurantDetailCard for delivery restaurant", () => {});
 
   it('shows filtered restaurantDetailCards for each cinema restaurant accdording to "Search by name" and "Search by Genre', () => {});
@@ -18,6 +17,5 @@ describe("DeliveryNow.vue", () => {
 
   it('emits "delivery-started" event with the selected platform on delivery platform button click', async () => {});
 
-  it('diplays the popup message for the delivery status on delivery icon clicking', async () => {});
-
+  it("diplays the popup message for the delivery status on delivery icon clicking", async () => {});
 });

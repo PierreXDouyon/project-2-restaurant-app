@@ -1,5 +1,1 @@
-describe('AddToWatchlistTitle.vue', () => {
-
-   
-
-});
+describe("AddToWatchlistTitle.vue", () => {});

@@ -1,5 +1,3 @@
-describe('DeliveryButtons.vue', () => {
-
-    it("displays the dishes icons", async () => {});     
-
+describe("DeliveryButtons.vue", () => {
+  it("displays the dishes icons", async () => {});
 });

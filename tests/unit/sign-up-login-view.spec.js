@@ -35,10 +35,9 @@ describe("SignUpLoginView.vue", () => {
 
   it("displays the a confirmation message for successful login or successful sign-up", () => {});
 
-  it('displays the popup message for the authentication status on Signup button or Login button clicking', () => {});
+  it("displays the popup message for the authentication status on Signup button or Login button clicking", () => {});
 
-  it('displays the Google soical login button', () => {});
+  it("displays the Google soical login button", () => {});
 
-  it('displays the Facebook soical login button', () => {});
-
+  it("displays the Facebook soical login button", () => {});
 });

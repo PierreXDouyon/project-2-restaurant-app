@@ -1,7 +1,5 @@
-describe('RestaurantFacts.vue', () => {
+describe("RestaurantFacts.vue", () => {
+  it("displays the facts detals", () => {});
 
-    it('displays the facts detals', () => {})
-
-    it('displays the menu', () => {})
-
+  it("displays the menu", () => {});
 });

@@ -1,9 +1,5 @@
-describe('TablesGrid.vue', () => {
+describe("TablesGrid.vue", () => {
+  it("displays the table grid", () => {});
 
-
-    it('displays the table grid', () => {})
-
-    it('is located correctly within the ReservationView page', () => {})
-
-
+  it("is located correctly within the ReservationView page", () => {});
 });

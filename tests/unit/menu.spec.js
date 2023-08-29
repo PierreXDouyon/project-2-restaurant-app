@@ -1,7 +1,5 @@
-describe('Menu.vue', () => {
+describe("Menu.vue", () => {
+  it("is located correctly within the RestaurantInfo page", () => {});
 
-    it('is located correctly within the RestaurantInfo page', () => {})
-
-    it('displays the menus', () => {})
-
+  it("displays the menus", () => {});
 });
