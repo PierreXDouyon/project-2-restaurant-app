@@ -11,7 +11,7 @@
 
 <script>
 import TitleView from "@/components/Title.vue";
-import MemberHeaderView from "@/components/MemberHeaderView.vue";
+import MemberHeaderView from "@/components/MemberHeader.vue";
 import ReservedRestaurant from "@/components/ReservedRestaurant.vue";
 import FooterView from "@/components/Footer.vue";
 
