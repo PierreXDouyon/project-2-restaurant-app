@@ -1,6 +1,10 @@
 <template>
   <div class="input-element">
-    <input class="input" v-model="inputValue" />
+    <input
+      class="input"
+      :value="value"
+      @input="inputData($event.target.value)"
+    />
   </div>
 </template>
 
@@ -10,9 +14,15 @@ export default {
   props: {
     value: String,
   },
+  methods: {
+    inputData(value) {
+      console.log(value);
+      this.$emit("data", value);
+    },
+  },
   data() {
     return {
-      inputValue: this.value || "", // Initialize the input value with the prop
+      // inputValue: this.value || "", // Initialize the input value with the prop
     };
   },
 };
