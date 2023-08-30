@@ -10,10 +10,16 @@
     <div class="seats-available-element">
       <select>
         <option selected disabled>Choose a seat</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
+        <option value="1">2</option>
+        <option value="2">4</option>
+        <option value="3">6</option>
+        <option value="4">8</option>
+        <option value="4">10</option>
+        <option value="4">12</option>
+        <option value="4">14</option>
+        <option value="4">16</option>
+        <option value="4">18</option>
+        <option value="4">20</option>
       </select>
     </div>
     <InputTitleView name="Days Open" />
@@ -98,7 +104,7 @@ export default {
   border-radius: 4px;
 }
 
-.days-item::hover {
+.days-item:hover {
   background: white;
   color: black;
 }
