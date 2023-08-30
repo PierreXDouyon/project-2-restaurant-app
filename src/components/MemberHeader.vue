@@ -7,7 +7,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import ButtonView from "@/components/Button.vue";
 
 export default {
