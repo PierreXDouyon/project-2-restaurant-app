@@ -2,7 +2,7 @@
   <div class="auth-elements">
     <TitleView title="Login" />
     <InputTitleView name="User Name" />
-    <InputView :value="inputValue" />
+    <InputView v-on:data="getValue" />
     <ButtonView name="LOGIN" @button-clicked="handleLoginClick" />
     <ConfirmMessageView
       v-if="iscalled"
@@ -32,22 +32,31 @@ export default {
   data: function () {
     return {
       confirmstatus: "checking",
-      inputValue: "lkl",
       status: 1,
       iscalled: false,
+      inputVal: "",
     };
   },
   methods: {
     handleLoginClick() {
       // Handle the button click event here
-      console.log("LOGIN button clicked!", this.inputValue);
+      console.log("LOGIN button clicked!", this.inputVal);
       this.iscalled = true;
       if (this.status == 1) {
         this.confirmstatus = "Login Successfully!";
+        let username = this.inputVal.toLowerCase();
+        if (username.includes("restaurant")) {
+          window.location.href = "/restaurantprofile";
+        } else {
+          window.location.href = "/memberprofile";
+        }
       } else {
         this.confirmstatus = "Login Failed, please try again.";
       }
       // You can perform actions like sending API requests, updating data, etc.
+    },
+    getValue(event) {
+      this.inputVal = event;
     },
   },
 };
