@@ -1,8 +1,10 @@
-import { mount } from '@vue/test-utils';
-import MemberHeaderView from '@/components/MemberHeaderView.vue';
-import MemberProfileView from '@/views/MemberProfileView.vue';
+import { mount } from "@vue/test-utils";
+import MemberHeaderView from "@/components/MemberHeaderView.vue";
+import MemberReservationView from '@/views/MemberReservationView.vue';
+import MemberProfileView from "@/views/MemberProfileView.vue";
+import MemberRestaurantsView from '@/views/MemberRestaurantsView.vue';
 
-describe('MemberHeaderView', () => {
+describe("MemberHeaderView", () => {
   it('redirects to login page on "Sign Out" button click', async () => {
     const wrapper = mount(MemberProfileView);
 
@@ -10,19 +12,19 @@ describe('MemberHeaderView', () => {
     const memberHeaderView = wrapper.findComponent(MemberHeaderView);
 
     // Spy on the window.location.assign method
-    const assignMock = jest.spyOn(window.location, 'assign');
+    const assignMock = jest.spyOn(window.location, "assign");
 
     // Find the "Sign Out" button within MemberHeaderView
-    const signOutButton = memberHeaderView.find('.button').at(0);
+    const signOutButton = memberHeaderView.find(".button").at(0);
 
     // Simulate a button click
-    signOutButton.trigger('click');
+    signOutButton.trigger("click");
 
     // Wait for the next tick for the promise to resolve
     await wrapper.vm.$nextTick();
 
     // Assert the redirection logic
-    expect(assignMock).toHaveBeenCalledWith('/login');
+    expect(assignMock).toHaveBeenCalledWith("/login");
 
     // Restore the original method
     assignMock.mockRestore();
@@ -35,19 +37,19 @@ describe('MemberHeaderView', () => {
     const memberHeaderView = wrapper.findComponent(MemberHeaderView);
 
     // Spy on the window.location.assign method
-    const assignMock = jest.spyOn(window.location, 'assign');
+    const assignMock = jest.spyOn(window.location, "assign");
 
     // Find the "Restaurants" button within MemberHeaderView
-    const restaurantsButton = memberHeaderView.find('.button').at(1);
+    const restaurantsButton = memberHeaderView.find(".button").at(1);
 
     // Simulate a button click
-    restaurantsButton.trigger('click');
+    restaurantsButton.trigger("click");
 
     // Wait for the next tick for the promise to resolve
     await wrapper.vm.$nextTick();
 
     // Assert the redirection logic
-    expect(assignMock).toHaveBeenCalledWith('/memberrestaurants');
+    expect(assignMock).toHaveBeenCalledWith("/memberrestaurants");
 
     // Restore the original method
     assignMock.mockRestore();
@@ -60,21 +62,36 @@ describe('MemberHeaderView', () => {
     const memberHeaderView = wrapper.findComponent(MemberHeaderView);
 
     // Spy on the window.location.assign method
-    const assignMock = jest.spyOn(window.location, 'assign');
+    const assignMock = jest.spyOn(window.location, "assign");
 
     // Find the "Profile" button within MemberHeaderView
-    const profileButton = memberHeaderView.find('.button').at(2);
+    const profileButton = memberHeaderView.find(".button").at(2);
 
     // Simulate a button click
-    profileButton.trigger('click');
+    profileButton.trigger("click");
 
     // Wait for the next tick for the promise to resolve
     await wrapper.vm.$nextTick();
 
     // Assert the redirection logic
-    expect(assignMock).toHaveBeenCalledWith('/memberprofile');
+    expect(assignMock).toHaveBeenCalledWith("/memberprofile");
 
     // Restore the original method
     assignMock.mockRestore();
+  });
+
+  it('displays MemberHeaderView component', () => {
+    const wrapper = mount(MemberReservationView);
+    expect(wrapper.findComponent(MemberHeaderView).exists()).toBe(true);
+  });
+
+  it('displays MemberHeaderView component', () => {
+    const wrapper = mount(MemberProfileView);
+    expect(wrapper.findComponent(MemberHeaderView).exists()).toBe(true);
+  });
+
+  it('displays MemberHeaderView component', () => {
+    const wrapper = mount(MemberRestaurantsView);
+    expect(wrapper.findComponent(MemberHeaderView).exists()).toBe(true);
   });
 });

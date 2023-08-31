@@ -1,13 +1,24 @@
 <template>
   <div class="member-header-elements">
-    <ButtonView name="Sign Out" @button-clicked="handleLoginRedirect" />
-    <ButtonView name="Restaurants" @button-clicked="handleRestaurantRedirect" />
-    <ButtonView name="Profile" @button-clicked="handleProfileRedirect" />
+    <ButtonView
+      class="button-signout"
+      name="Sign Out"
+      @button-clicked="handleLoginRedirect"
+    />
+    <ButtonView
+      class="button-restaurants"
+      name="Restaurants"
+      @button-clicked="handleRestaurantRedirect"
+    />
+    <ButtonView
+      class="button-profile"
+      name="Profile"
+      @button-clicked="handleProfileRedirect"
+    />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import ButtonView from "@/components/Button.vue";
 
 export default {
