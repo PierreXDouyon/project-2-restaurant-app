@@ -1,70 +1,87 @@
 <template>
   <div class="restaurant-profile-elements">
-    <RestaurantHeaderView />
-    <TitleView title="Restaurant Profile" />
-    <InputTitleView name="Restaurant Name" />
-    <InputView v-on:data="getRestaurantName" />
-    <InputTitleView name="Category" />
-    <InputView v-on:data="getCategoryName" />
-    <InputTitleView name="Seats Available" />
-    <div class="seats-available-element">
-      <select>
-        <option selected disabled>Choose a seat</option>
-        <option value="1">2</option>
-        <option value="2">4</option>
-        <option value="3">6</option>
-        <option value="4">8</option>
-        <option value="4">10</option>
-        <option value="4">12</option>
-        <option value="4">14</option>
-        <option value="4">16</option>
-        <option value="4">18</option>
-        <option value="4">20</option>
-      </select>
-    </div>
-    <InputTitleView name="Days Open" />
+    <RestaurantHeaderComponent />
+    <TitleComponent title="Restaurant Profile" />
+    <InputTitleComponent name="Restaurant Name" />
+    <InputComponent v-on:data="getRestaurantName" />
+    <InputTitleComponent name="Category" />
+    <CategoryCheckBoxComponent
+      :buttons="categoryOptions"
+      v-model="selectedButtonValues"
+    />
+    <InputTitleComponent name="Seats Available" />
+    <SelectNumberComponent v-model="seat" :step="2" :maxnumber="100" />
+    <InputTitleComponent name="Days Open" />
     <div class="days-open-element">
       <div class="days-item" v-for="day of days" :key="day">{{ day }}</div>
     </div>
     <div class="restaurant-profile-actions">
-      <Button name="Update" />
-      <DelButton name="Clear" />
+      <ButtonComponent name="Update" @button-clicked="handleUpdateProfile" />
+      <DelButtonComponent name="Clear" @button-clicked="handleClearProfile" />
     </div>
-    <FooterView />
+    <div class="profile-delete">
+      <DelButtonComponent
+        name="Profile Delete"
+        @button-clicked="handleDeleteProfile"
+      />
+    </div>
+    <FooterComponent />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import TitleView from "@/components/Title.vue";
-import InputTitleView from "@/components/InputTitle.vue";
-import InputView from "@/components/Input.vue";
-import RestaurantHeaderView from "@/components/RestaurantHeaderView.vue";
-import FooterView from "@/components/Footer.vue";
-import Button from "@/components/Button.vue";
-import DelButton from "@/components/DelButton.vue";
+import TitleComponent from "@/components/TitleComponent.vue";
+import InputTitleComponent from "@/components/InputTitleComponent.vue";
+import InputComponent from "@/components/InputComponent.vue";
+import RestaurantHeaderComponent from "@/components/RestaurantHeaderComponent.vue";
+import FooterComponent from "@/components/FooterComponent.vue";
+import ButtonComponent from "@/components/ButtonComponent.vue";
+import DelButtonComponent from "@/components/DelButtonComponent.vue";
+import CategoryCheckBoxComponent from "@/components/CategoryCheckBoxComponent.vue";
+import SelectNumberComponent from "@/components/SelectNumberComponent.vue";
 
 export default {
   name: "RestaurantProfileView",
   components: {
-    TitleView,
-    RestaurantHeaderView,
-    FooterView,
-    InputView,
-    InputTitleView,
-    Button,
-    DelButton,
+    TitleComponent,
+    RestaurantHeaderComponent,
+    FooterComponent,
+    InputComponent,
+    InputTitleComponent,
+    ButtonComponent,
+    DelButtonComponent,
+    CategoryCheckBoxComponent,
+    SelectNumberComponent,
   },
   data: function () {
     return {
       days: ["M", "T", "W", "TH", "F", "S", "SN"],
       restaurantName: "",
       categoryName: "",
+      seat: 1,
+      categoryOptions: [
+        { label: "Italian Food", value: "Italian Food" },
+        { label: "French Food", value: "French Food" },
+        { label: "Asian Food", value: "Asian Food" },
+        { label: "Eastern Food", value: "Eastern Food" },
+      ],
+      selectedButtonValues: [],
     };
   },
   methods: {
     getRestaurantName(event) {
       this.restaurantName = event;
+    },
+    handleUpdateProfile() {
+      console.log("--- updating the profile");
+    },
+    handleClearProfile() {
+      console.log("--- clearing the profile");
+    },
+    handleDeleteProfile() {
+      console.log("--- redireting the profile");
+      window.location.href = "/login";
     },
     getCategoryName(event) {
       this.categoryName = event;
@@ -80,6 +97,9 @@ export default {
   margin-top: 3%;
   display: flex;
   justify-content: space-between;
+}
+.profile-delete {
+  margin-top: 30px;
 }
 .days-open-element {
   max-width: 500px;
@@ -104,7 +124,7 @@ export default {
   border-radius: 4px;
 }
 
-.days-item:hover {
+.days-item::hover {
   background: white;
   color: black;
 }
