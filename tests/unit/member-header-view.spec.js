@@ -1,8 +1,8 @@
 import { mount } from "@vue/test-utils";
 import MemberHeaderView from "@/components/MemberHeaderView.vue";
-import MemberReservationView from '@/views/MemberReservationView.vue';
+import MemberReservationView from "@/views/MemberReservationView.vue";
 import MemberProfileView from "@/views/MemberProfileView.vue";
-import MemberRestaurantsView from '@/views/MemberRestaurantsView.vue';
+import MemberRestaurantsView from "@/views/MemberRestaurantsView.vue";
 
 describe("MemberHeaderView", () => {
   it('redirects to login page on "Sign Out" button click', async () => {
@@ -80,17 +80,17 @@ describe("MemberHeaderView", () => {
     assignMock.mockRestore();
   });
 
-  it('displays MemberHeaderView component', () => {
+  it("displays MemberHeaderView component", () => {
     const wrapper = mount(MemberReservationView);
     expect(wrapper.findComponent(MemberHeaderView).exists()).toBe(true);
   });
 
-  it('displays MemberHeaderView component', () => {
+  it("displays MemberHeaderView component", () => {
     const wrapper = mount(MemberProfileView);
     expect(wrapper.findComponent(MemberHeaderView).exists()).toBe(true);
   });
 
-  it('displays MemberHeaderView component', () => {
+  it("displays MemberHeaderView component", () => {
     const wrapper = mount(MemberRestaurantsView);
     expect(wrapper.findComponent(MemberHeaderView).exists()).toBe(true);
   });

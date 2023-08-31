@@ -1,6 +1,6 @@
 import { mount } from "@vue/test-utils";
 import AuthView from "@/views/AuthView.vue";
-import RestaurantProfileView from '@/views/RestaurantProfileView.vue';
+import RestaurantProfileView from "@/views/RestaurantProfileView.vue";
 import InputView from "@/components/Input.vue";
 
 describe("AuthView", () => {
@@ -28,7 +28,7 @@ describe("AuthView", () => {
     expect(wrapper.vm.inputVal).toBe("Test Input"); // Assuming you have inputVal in AuthView's data
   });
 
-  it('is displayed on RestaurantProfileView.vue', () => {
+  it("is displayed on RestaurantProfileView.vue", () => {
     const wrapper = mount(RestaurantProfileView);
     expect(wrapper.findComponent(InputView).exists()).toBe(true);
   });

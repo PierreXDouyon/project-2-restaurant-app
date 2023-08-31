@@ -1,6 +1,6 @@
 import { mount } from "@vue/test-utils";
 import AuthView from "@/views/AuthView.vue";
-import MemberReservationView from '@/views/MemberReservationView.vue';
+import MemberReservationView from "@/views/MemberReservationView.vue";
 import ConfirmMessage from "@/components/ConfirmMessage.vue";
 
 describe("AuthView", () => {
@@ -46,7 +46,7 @@ describe("ConfirmMessage", () => {
     expect(wrapper.vm.statusClass).toBe("");
   });
 
-  it('displays ConfirmMessage component', () => {
+  it("displays ConfirmMessage component", () => {
     // Mount the MemberReservationView component
     const wrapper = mount(MemberReservationView);
 
@@ -57,7 +57,7 @@ describe("ConfirmMessage", () => {
     expect(confirmMessageComponent.exists()).toBe(true);
   });
 
-  it('displays ConfirmMessage component', () => {
+  it("displays ConfirmMessage component", () => {
     // Mount the AuthView component
     const wrapper = mount(AuthView);
 

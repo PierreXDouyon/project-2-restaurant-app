@@ -1,9 +1,9 @@
 import { mount } from "@vue/test-utils";
 import AuthView from "@/views/AuthView.vue";
 import MemberProfileView from "@/views/MemberProfileView.vue";
-import MemberReservationView from '@/views/MemberReservationView.vue';
-import MemberRestaurantsView from '@/views/MemberRestaurantsView.vue';
-import RestaurantProfileView from '@/views/RestaurantProfileView.vue';
+import MemberReservationView from "@/views/MemberReservationView.vue";
+import MemberRestaurantsView from "@/views/MemberRestaurantsView.vue";
+import RestaurantProfileView from "@/views/RestaurantProfileView.vue";
 import TitleView from "@/components/Title.vue";
 
 describe("TitleView", () => {
@@ -31,22 +31,22 @@ describe("TitleView", () => {
     expect(titleView.props("title")).toBe("Member Profile");
   });
 
-  it('renders the title text', () => {
-    const title = 'Book Reservation';
+  it("renders the title text", () => {
+    const title = "Book Reservation";
     const wrapper = mount(TitleView, {
       propsData: {
-        title: title
-      }
+        title: title,
+      },
     });
     expect(wrapper.text()).toContain(title);
   });
 
-  it('displays TitleView component', () => {
+  it("displays TitleView component", () => {
     const wrapper = mount(MemberReservationView);
     expect(wrapper.findComponent(TitleView).exists()).toBe(true);
   });
 
-  it('displays TitleView component', () => {
+  it("displays TitleView component", () => {
     // Mount the MemberRestaurantsView component
     const wrapper = mount(MemberRestaurantsView);
 
@@ -57,7 +57,7 @@ describe("TitleView", () => {
     expect(titleComponent.exists()).toBe(true);
   });
 
-  it('is displayed on RestaurantProfileView.vue', () => {
+  it("is displayed on RestaurantProfileView.vue", () => {
     const wrapper = mount(RestaurantProfileView);
     expect(wrapper.findComponent(TitleView).exists()).toBe(true);
   });
