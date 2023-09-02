@@ -44,11 +44,13 @@ export default {
   /* Background for success status */
   background-color: #a8e6cf;
   color: grey;
+  padding: 10px;
 }
 
 .confirm.failure {
   /* Background for failure status */
   background-color: #f6b6b2;
   color: red;
+  padding: 10px;
 }
 </style>
