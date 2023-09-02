@@ -1,56 +1,81 @@
 <template>
-  <div class="confirm-element" :class="['confirm', statusClass]">
-    {{ content }}
+  <div class="auth-elements">
+    <TitleComponent title="Login" />
+    <InputTitleComponent name="User Name" />
+    <InputComponent v-on:data="getValue" />
+    <ButtonComponent name="LOGIN" @button-clicked="handleLoginClick" />
+    <ConfirmMessageComponent
+      v-if="iscalled"
+      :content="confirmstatus"
+      :status="status"
+    />
   </div>
 </template>
 
 <script>
+// @ is an alias to /src
+import ButtonComponent from "@/components/ButtonComponent.vue";
+import InputTitleComponent from "@/components/InputTitleComponent.vue";
+import InputComponent from "@/components/InputComponent.vue";
+import TitleComponent from "@/components/TitleComponent.vue";
+import ConfirmMessageComponent from "@/components/ConfirmMessageComponent.vue";
+
 export default {
-  name: "ConfirmMessageComponent",
-  props: {
-    content: String,
-    status: Number,
+  name: "AuthView",
+  components: {
+    ButtonComponent,
+    TitleComponent,
+    InputTitleComponent,
+    InputComponent,
+    ConfirmMessageComponent,
   },
-  computed: {
-    statusClass() {
-      if (this.status === 1) {
-        return "success";
-      } else if (this.status === 2) {
-        return "failure";
+  data: function () {
+    return {
+      confirmstatus: "checking",
+      status: 1,
+      iscalled: false,
+      inputVal: "",
+    };
+  },
+  methods: {
+    handleLoginClick() {
+      // Handle the button click event here
+      console.log("LOGIN button clicked!", this.inputVal);
+      this.iscalled = true;
+      if (this.status == 1) {
+        this.confirmstatus = "Login Successfully!";
+        let username = this.inputVal.toLowerCase();
+        if (username.includes("restaurant")) {
+          window.location.href = "/restaurantprofile";
+        } else {
+          window.location.href = "/memberprofile";
+        }
       } else {
-        return ""; // No additional class
+        this.confirmstatus = "Login Failed, please try again.";
       }
+      // You can perform actions like sending API requests, updating data, etc.
+    },
+    getValue(event) {
+      this.inputVal = event;
     },
   },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.confirm-element {
-  font-size: 14px;
-  width: 50%;
-  border: 1px solid;
+.auth-elements {
+  padding: 2% 0;
+  width: 400px;
   margin: auto;
-  height: 40px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
+  border: 1px solid;
+  margin-top: 10%;
+  border-radius: 7px;
+}
+.auth-elements .button-element {
+  margin-top: 20px;
 }
 
-.confirm.success {
-  /* Background for success status */
-  background-color: #a8e6cf;
-  color: grey;
-  padding: 10px;
-}
-
-.confirm.failure {
-  /* Background for failure status */
-  background-color: #f6b6b2;
-  color: red;
-  padding: 10px;
+.auth-elements .confirm-element {
+  margin-top: 20px;
 }
 </style>
