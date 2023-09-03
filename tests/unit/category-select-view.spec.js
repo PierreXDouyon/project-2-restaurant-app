@@ -40,7 +40,7 @@ describe("CategorySelectView.vue", () => {
       "Italian Food",
       "French Food",
       "Asian Food",
-      "Eastern Food",
+      "Mid. Eastern Food",
     ]);
 
     await allSelectedOption.trigger("click"); // Click on "All Selected" option again to deselect
