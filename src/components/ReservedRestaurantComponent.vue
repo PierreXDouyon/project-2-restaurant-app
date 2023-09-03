@@ -37,14 +37,15 @@ export default {
   margin: auto;
   text-align: initial;
   margin-top: 2%;
-}
-.reserved-elements .button-element .button {
-  margin-top: 20px;
-  background: red !important;
-  color: white;
-}
 
-.auth-elements .confirm-element {
-  margin-top: 20px;
+  .button-element .button {
+    margin-top: 20px;
+    background: red !important;
+    color: white;
+  }
+
+  .confirm-element {
+    margin-top: 20px;
+  }
 }
 </style>

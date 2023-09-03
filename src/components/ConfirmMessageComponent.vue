@@ -65,10 +65,9 @@ export default {
 <style scoped lang="scss">
 .auth-elements {
   padding: 2% 0;
-  width: 400px;
+  width: 320px;
   margin: auto;
   border: 1px solid;
-  margin-top: 10%;
   border-radius: 7px;
 }
 .auth-elements .button-element {
@@ -77,5 +76,11 @@ export default {
 
 .auth-elements .confirm-element {
   margin-top: 20px;
+}
+
+@media (min-width: 576px) {
+  .auth-elements {
+    width: 500px;
+  }
 }
 </style>

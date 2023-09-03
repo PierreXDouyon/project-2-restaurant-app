@@ -34,7 +34,11 @@ export default {
 .restaurant-details-elements {
   max-width: 300px;
   margin: auto;
-  text-align: initial;
+  text-align: center;
   margin-top: 2%;
+
+  .button {
+    font-size: 15px !important;
+  }
 }
 </style>

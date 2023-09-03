@@ -19,6 +19,7 @@ import InputTitleComponent from "@/components/InputTitleComponent.vue";
 import InputComponent from "@/components/InputComponent.vue";
 import TitleComponent from "@/components/TitleComponent.vue";
 import ConfirmMessageComponent from "@/components/ConfirmMessageComponent.vue";
+import { loginUser } from "@/api/auth";
 
 export default {
   name: "AuthView",
@@ -38,22 +39,45 @@ export default {
     };
   },
   methods: {
-    handleLoginClick() {
-      // Handle the button click event here
-      console.log("LOGIN button clicked!", this.inputVal);
-      this.iscalled = true;
-      if (this.status == 1) {
-        this.confirmstatus = "Login Successfully!";
-        let username = this.inputVal.toLowerCase();
-        if (username.includes("restaurant")) {
-          window.location.href = "/restaurantprofile";
-        } else {
-          window.location.href = "/memberprofile";
+    async handleLoginClick() {
+      let username = this.inputVal.toLowerCase();
+      try {
+        const userdata = { username: username };
+        const loginResult = await loginUser(userdata);
+        console.log("-- login result---");
+        console.log(loginResult);
+        this.iscalled = true;
+        if (loginResult.success && loginResult.data) {
+          if (loginResult.data.result.status == 1) {
+            this.confirmstatus =
+              "Currently, someone logined with your username already.";
+            this.status = 2;
+          } else if (loginResult.data.result.status == 2) {
+            this.confirmstatus = "Login Successfully!";
+            this.status = 1;
+            setTimeout(() => {
+              if (loginResult.data.result.role == 2) {
+                window.location.href = "/restaurantprofile";
+              } else {
+                window.location.href = "/memberprofile";
+              }
+            }, 2000);
+          } else if (loginResult.data.result.status == 3) {
+            this.confirmstatus = "You are new user in this system!";
+            this.status = 1;
+            setTimeout(() => {
+              if (loginResult.data.result.role == 2) {
+                window.location.href = "/restaurantprofile";
+              } else {
+                window.location.href = "/memberprofile";
+              }
+            }, 2000);
+          }
         }
-      } else {
-        this.confirmstatus = "Login Failed, please try again.";
+      } catch (error) {
+        this.iscalled = false;
+        console.error("Error login user:", error);
       }
-      // You can perform actions like sending API requests, updating data, etc.
     },
     getValue(event) {
       this.inputVal = event;
@@ -65,17 +89,23 @@ export default {
 <style scoped lang="scss">
 .auth-elements {
   padding: 2% 0;
-  width: 400px;
+  width: 320px;
   margin: auto;
   border: 1px solid;
   margin-top: 10%;
   border-radius: 7px;
-}
-.auth-elements .button-element {
-  margin-top: 20px;
+  .button-element {
+    margin-top: 20px;
+  }
+
+  .confirm-element {
+    margin-top: 20px;
+  }
 }
 
-.auth-elements .confirm-element {
-  margin-top: 20px;
+@media (min-width: 576px) {
+  .auth-elements {
+    width: 80%;
+  }
 }
 </style>

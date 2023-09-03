@@ -74,29 +74,43 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.restaurant-list-elements {
-  margin-top: 2% !important;
-  max-width: 1200px;
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  margin: auto;
-}
-.res-details {
-  border: 1px solid;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-}
-.restaurant-list-elements .button {
-  margin: auto;
-}
-.restaurant-list-elements .title-element {
+.list-container {
   margin-top: 2%;
+  padding-bottom: 40px;
+  .restaurant-list-elements {
+    margin-top: 2% !important;
+    max-width: 1200px;
+    width: 90%;
+    display: grid;
+    gap: 40px;
+    margin: auto;
+  }
+  .res-details {
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+  .restaurant-list-elements .button {
+    margin: auto;
+  }
+  .restaurant-list-elements .title-element {
+    margin-top: 2%;
+  }
+  .view-more-action {
+    margin: 3%;
+  }
 }
-.view-more-action {
-  margin: 3%;
+@media (min-width: 576px) {
+  .restaurant-list-elements {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .restaurant-list-elements {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 </style>

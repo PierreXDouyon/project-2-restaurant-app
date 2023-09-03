@@ -50,14 +50,28 @@ export default {
 .checkbox-button {
   display: flex;
   align-items: center;
+
+  input[type="checkbox"] {
+    margin-right: 5px;
+  }
+
+  /* Add some styling for selected checkboxes */
+  input[type="checkbox"]:checked + span {
+    font-weight: bold;
+  }
 }
 
-.checkbox-button input[type="checkbox"] {
-  margin-right: 5px;
+@media (min-width: 576px) {
+  .checkbox-button-group {
+    gap: 15px;
+    font-size: 24px;
+  }
 }
 
-/* Add some styling for selected checkboxes */
-.checkbox-button input[type="checkbox"]:checked + span {
-  font-weight: bold;
+@media (min-width: 1000px) {
+  .checkbox-button-group {
+    gap: 30px;
+    font-size: 26px;
+  }
 }
 </style>

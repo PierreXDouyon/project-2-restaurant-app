@@ -48,7 +48,6 @@ export default {
 .restaurant-details-elements {
   max-width: 300px;
   margin: auto;
-  text-align: initial;
   margin-top: 2%;
 }
 </style>

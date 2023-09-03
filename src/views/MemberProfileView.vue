@@ -44,12 +44,23 @@ export default {
 <style scoped lang="scss">
 .member-profile-elements {
   margin-top: 0%;
-}
-.member-profile-elements .title-element {
-  margin-top: 2%;
+  padding-bottom: 40px;
+  .title-element {
+    margin-top: 2%;
+  }
+
+  .confirm-element {
+    margin-top: 20px;
+  }
 }
 
-.auth-elements .confirm-element {
-  margin-top: 20px;
+@media (min-width: 576px) {
+  .member-profile-elements {
+    font-size: 26px;
+
+    .title-element {
+      font-size: 60px;
+    }
+  }
 }
 </style>

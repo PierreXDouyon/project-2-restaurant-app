@@ -77,9 +77,8 @@ export default {
 .restaurant-list-elements {
   margin-top: 2% !important;
   max-width: 1200px;
-  width: 100%;
+  width: 90%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: 40px;
   margin: auto;
 }
@@ -98,5 +97,17 @@ export default {
 }
 .view-more-action {
   margin: 3%;
+}
+
+@media (min-width: 576px) {
+  .restaurant-list-elements {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .restaurant-list-elements {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 </style>

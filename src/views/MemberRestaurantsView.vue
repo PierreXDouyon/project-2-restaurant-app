@@ -44,7 +44,7 @@ export default {
         { label: "Italian Food", value: "Italian Food" },
         { label: "French Food", value: "French Food" },
         { label: "Asian Food", value: "Asian Food" },
-        { label: "Eastern Food", value: "Eastern Food" },
+        { label: "Mid. Eastern Food", value: "Mid. Eastern Food" },
       ],
     };
   },
@@ -55,8 +55,9 @@ export default {
 <style scoped lang="scss">
 .member-restaurants-elements {
   margin-top: 0%;
+  padding-bottom: 40px;
 }
 .member-restaurants-elements .title-element {
-  margin-top: 2%;
+  margin-top: 4%;
 }
 </style>

@@ -14,17 +14,18 @@
     </div>
     <UserRestaurantsListComponent />
     <FooterComponent />
+    <ScrollUpComponent />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import TitleComponent from "@/components/TitleComponent.vue";
 import RestaurantHeaderComponent from "@/components/RestaurantHeaderComponent.vue";
 import FooterComponent from "@/components/FooterComponent.vue";
 import ButtonComponent from "@/components/ButtonComponent.vue";
 import UserRestaurantsListComponent from "@/components/UserRestaurantsListComponent.vue";
 import DelButtonComponent from "@/components/DelButtonComponent.vue";
+import ScrollUpComponent from "@/components/ScrollUpComponent.vue";
 
 export default {
   name: "RestaurantProfileView",
@@ -35,6 +36,7 @@ export default {
     UserRestaurantsListComponent,
     ButtonComponent,
     DelButtonComponent,
+    ScrollUpComponent,
   },
   data: function () {
     return {
@@ -46,7 +48,7 @@ export default {
         { label: "Italian Food", value: "Italian Food" },
         { label: "French Food", value: "French Food" },
         { label: "Asian Food", value: "Asian Food" },
-        { label: "Eastern Food", value: "Eastern Food" },
+        { label: "Mid. Eastern Food", value: "Mid. Eastern Food" },
       ],
       selectedButtonValues: [],
     };
@@ -83,7 +85,9 @@ export default {
 .profile-delete {
   display: flex;
   margin: auto;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 17px;
+  padding-top: 25px;
 }
 .days-open-element {
   max-width: 500px;
@@ -93,9 +97,10 @@ export default {
 }
 .member-profile-elements {
   margin-top: 0%;
-}
-.member-profile-elements .title-element {
-  margin-top: 2%;
+
+  .title-element {
+    margin-top: 2%;
+  }
 }
 .days-item {
   display: flex;
@@ -106,14 +111,20 @@ export default {
   border: 1px solid;
   background: pink;
   border-radius: 4px;
-}
 
-.days-item::hover {
-  background: white;
-  color: black;
+  &:hover {
+    background: white;
+    color: black;
+  }
 }
 
 .auth-elements .confirm-element {
   margin-top: 20px;
+}
+
+@media (min-width: 576px) {
+  .profile-delete {
+    gap: 40px;
+  }
 }
 </style>
