@@ -64,7 +64,6 @@ import ButtonView from "@/components/ButtonComponent.vue";
 import SelectNumberComponent from "@/components/SelectNumberComponent.vue";
 import InputTitleComponent from "@/components/InputTitleComponent.vue";
 import { useRestaurantStore } from "@/store/restaurant";
-import { useReservationStore } from "@/store/reservation";
 import { useRouter } from "vue-router";
 import { useUserStore } from "@/store/user";
 import { createReservation } from "@/api/reservation";
@@ -82,10 +81,9 @@ export default {
   },
   setup() {
     const useRestaurantInfo = useRestaurantStore();
-    const userReservationInfo = useReservationStore();
     const router = useRouter();
     const userInfo = useUserStore();
-    return { useRestaurantInfo, router, userInfo, userReservationInfo };
+    return { useRestaurantInfo, router, userInfo };
   },
   data: function () {
     return {
@@ -116,6 +114,9 @@ export default {
         currentyear + "-" + this.month + "-" + this.date
       );
       this.day = this.dayNames[selected_bookdate.getDay()];
+      if (this.userInfo.userId == "") {
+        this.userInfo.setUserId(localStorage.getItem("userId"));
+      }
       let reservationObj = {
         name: this.useRestaurantInfo.restaurant.name,
         restaurantId: this.useRestaurantInfo.restaurant._id,
@@ -164,13 +165,19 @@ export default {
       this.month = currentDate.getMonth() + 1;
       const dayIndex = currentDate.getDay();
       this.day = this.dayNames[dayIndex];
-      console.log("--- today is", this.day);
+      if (
+        this.useRestaurantInfo.restaurant.name == "" ||
+        this.useRestaurantInfo.restaurant.restaurantImg == ""
+      ) {
+        let getRetaurantInfo = JSON.parse(
+          localStorage.getItem("restaurantInfo")
+        );
+        this.useRestaurantInfo.setRestauratInfo(getRetaurantInfo);
+      }
     },
   },
   created() {
     this.getBookdata();
-    console.log("-- user id");
-    console.log(this.userInfo.userId);
   },
 };
 </script>
@@ -251,24 +258,26 @@ export default {
   // .select-seat-element {
   //   padding-left: 64.5px;
   // }
-}
-.open-day-item {
-  display: flex;
-  margin: auto;
-  width: 600px;
-  justify-content: center;
-  gap: 10px;
-  div {
-    width: 100px;
-    height: 30px;
-    border: 1px solid;
+
+  .open-day-item {
     display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    width: 300px;
     justify-content: center;
-    align-items: center;
-    text-transform: capitalize;
-    border-radius: 5px;
-    background: pink;
-    font-weight: 600;
+    gap: 10px;
+    div {
+      width: calc((100% - 10px) / 2);
+      height: 30px;
+      border: 1px solid;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: capitalize;
+      border-radius: 5px;
+      background: pink;
+      font-weight: 600;
+    }
   }
 }
 

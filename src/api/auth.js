@@ -32,7 +32,7 @@ export async function singoutUser(username) {
 }
 export async function deletetProfile(username) {
   const response = await fetch(`${apiUrl}/auth/delete`, {
-    method: "POST",
+    method: "DELETE",
     headers: {
       "Content-Type": "application/json", // Specify the content type
       // You can add other headers here if needed, like authentication headers
