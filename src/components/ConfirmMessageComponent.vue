@@ -29,18 +29,18 @@ export default {
 .auth-elements {
   padding: 2% 0;
   width: 320px;
-  margin: auto;
+  margin: 5px auto auto auto;
   border: 1px solid;
   border-radius: 7px;
-}
-.auth-elements .button-element {
-  margin-top: 20px;
-}
 
-.auth-elements .confirm-element {
-  margin-top: 20px;
-}
+  .button-element {
+    margin-top: 20px;
+  }
 
+  .confirm-element {
+    margin-top: 20px;
+  }
+}
 @media (min-width: 576px) {
   .auth-elements {
     width: 500px;

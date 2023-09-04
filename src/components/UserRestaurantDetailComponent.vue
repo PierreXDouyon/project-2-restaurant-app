@@ -79,8 +79,9 @@ export default {
 .restaurant-details-elements {
   width: 300px;
   margin: auto;
-  text-align: initial;
   margin-top: 2%;
+  display: grid;
+  place-items: center;
 }
 
 .category-item {
@@ -97,6 +98,8 @@ export default {
 
 .categories {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 4px;
   margin-top: 20px;
   margin-bottom: 10px;

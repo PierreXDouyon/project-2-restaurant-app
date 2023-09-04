@@ -90,7 +90,7 @@ export default {
   text-align: center;
   border-left: 0px;
   border-right: 0px;
-  font-size: 24px;
+  font-size: 18px;
 }
 input[type="number"] {
   text-align: center;
@@ -114,6 +114,7 @@ input[type="number"] {
   .number-control {
     width: 45px;
     height: 30px;
+    font-size: 24px;
   }
 }
 

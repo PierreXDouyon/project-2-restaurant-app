@@ -13,6 +13,7 @@
       </div>
     </div>
     <ConfirmMessageComponent
+      id="confirm"
       v-if="isCalled"
       :content="confirmstatus"
       :status="status"
@@ -38,18 +39,21 @@
         />
       </div>
     </div>
-    <div class="reservation-now-actions">
-      <div class="select-seat-element">
-        <InputTitleComponent name="Choose a seat" />
-        <SelectNumberComponent
-          v-on:SelectedNum="handleChooseseat"
-          :value="seats"
-          :step="2"
-          :maxnumber="useRestaurantInfo.restaurant.seats"
-        />
-      </div>
-      <ButtonView name="RESERVE NOW" @button-clicked="handleReserveNow" />
+    <div class="reservation-now-actions"></div>
+    <div class="select-seat-element">
+      <InputTitleComponent name="Choose a seat" />
+      <SelectNumberComponent
+        v-on:SelectedNum="handleChooseseat"
+        :value="seats"
+        :step="2"
+        :maxnumber="useRestaurantInfo.restaurant.seats"
+      />
     </div>
+    <ButtonView
+      id="resbtn"
+      name="RESERVE NOW"
+      @button-clicked="handleReserveNow"
+    />
     <FooterComponent />
   </div>
 </template>
@@ -185,10 +189,14 @@ export default {
 <style scoped lang="scss">
 .member-restaurants-elements {
   margin-top: 0%;
-  padding-bottom: 40px;
+  padding-bottom: 60px;
 
   .title-element {
     margin-top: 2%;
+  }
+
+  h4 {
+    font-size: 25px;
   }
   .reservation-now-actions {
     display: flex;
@@ -252,13 +260,6 @@ export default {
     justify-content: space-around;
   }
 
-  .select-seat-element {
-    width: 45%;
-  }
-  // .select-seat-element {
-  //   padding-left: 64.5px;
-  // }
-
   .open-day-item {
     display: flex;
     flex-wrap: wrap;
@@ -267,7 +268,7 @@ export default {
     justify-content: center;
     gap: 10px;
     div {
-      width: calc((100% - 10px) / 2);
+      width: 100px;
       height: 30px;
       border: 1px solid;
       display: flex;
@@ -279,17 +280,34 @@ export default {
       font-weight: 600;
     }
   }
+
+  #confirm {
+    margin-top: 20px;
+  }
+
+  #resbtn {
+    margin-top: 40px;
+  }
 }
 
 @media (min-width: 576px) {
   .select-reservation-date {
     margin: -50px auto auto auto !important;
   }
-  .select-seat-element {
-    width: 54% !important;
-  }
+
   h4 {
-    font-size: 40px;
+    font-size: 50px !important;
+  }
+
+  .open-day-item {
+    flex-wrap: nowrap !important;
+    width: 570px !important;
+
+    div {
+      width: 250px !important;
+      height: 50px !important;
+      font-size: 20px !important;
+    }
   }
 }
 
