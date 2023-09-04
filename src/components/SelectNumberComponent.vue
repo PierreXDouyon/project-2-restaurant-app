@@ -90,9 +90,31 @@ export default {
   text-align: center;
   border-left: 0px;
   border-right: 0px;
+  font-size: 24px;
 }
 input[type="number"] {
   text-align: center;
+}
+
+@media (min-width: 576px) {
+  .seat-number-control {
+    gap: 10px;
+    font-size: 18px;
+  }
+  .min-btn {
+    height: 35px;
+    width: 45px;
+    font-size: 30px;
+  }
+  .max-btn {
+    height: 35px;
+    width: 45px;
+    font-size: 30px;
+  }
+  .number-control {
+    width: 45px;
+    height: 30px;
+  }
 }
 
 @media (min-width: 1000px) {

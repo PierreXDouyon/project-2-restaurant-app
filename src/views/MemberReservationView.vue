@@ -48,7 +48,7 @@
           :maxnumber="useRestaurantInfo.restaurant.seats"
         />
       </div>
-      <ButtonView name="Reserve Now" @button-clicked="handleReserveNow" />
+      <ButtonView name="RESERVE NOW" @button-clicked="handleReserveNow" />
     </div>
     <FooterComponent />
   </div>

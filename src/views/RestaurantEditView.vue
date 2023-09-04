@@ -34,7 +34,7 @@
       :status="status"
     />
     <div class="restaurant-profile-actions">
-      <ButtonComponent name="Save" @button-clicked="handleUpdateRestaurant" />
+      <ButtonComponent name="SAVE" @button-clicked="handleUpdateRestaurant" />
     </div>
     <FooterComponent />
   </div>

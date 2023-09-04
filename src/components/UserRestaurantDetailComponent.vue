@@ -14,8 +14,8 @@
       </button>
     </div>
     <div class="restaurant-actions">
-      <ButtonComponent name="Edit" @button-clicked="Edit" />
-      <DelButtonComponent name="Delete" @button-clicked="Delete" />
+      <ButtonComponent name="EDIT" @button-clicked="Edit" />
+      <DelButtonComponent name="DELETE" @button-clicked="Delete" />
     </div>
   </div>
 </template>

@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="view-more-action">
-      <ButtonComponent name="View More Restaurants" />
+      <ButtonComponent name="VIEW MORE RESTAURANTS" />
     </div>
   </div>
 </template>

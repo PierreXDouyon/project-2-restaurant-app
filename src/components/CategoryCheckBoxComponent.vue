@@ -64,14 +64,26 @@ export default {
 @media (min-width: 576px) {
   .checkbox-button-group {
     gap: 15px;
-    font-size: 24px;
+    font-size: 26px;
+  }
+
+  .checkbox-button input {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (min-width: 768px) {
+  .checkbox-button input {
+    width: 24px;
+    height: 24px;
   }
 }
 
 @media (min-width: 1000px) {
   .checkbox-button-group {
     gap: 30px;
-    font-size: 26px;
+    font-size: 32px;
   }
 }
 </style>

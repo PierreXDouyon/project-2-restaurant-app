@@ -49,4 +49,11 @@ export default {
     }
   }
 }
+
+@media (min-width: 576px) {
+  .input {
+    width: 450px;
+    font-size: 24px;
+  }
+}
 </style>

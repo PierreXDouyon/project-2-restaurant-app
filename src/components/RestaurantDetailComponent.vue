@@ -3,7 +3,7 @@
     <div class="detail-object">
       <h2>{{ name }}</h2>
       <img :src="src" />
-      <ButtonComponent name="Book Reservation" @button-clicked="BookReserved" />
+      <ButtonComponent name="BOOK RESERVATION" @button-clicked="BookReserved" />
     </div>
   </div>
 </template>
@@ -56,8 +56,8 @@ export default {
   max-width: 300px;
   margin: auto;
   margin-top: 2%;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  place-items: center;
 }
 .detail-object img {
   width: 250px;

@@ -25,12 +25,12 @@ export default {
   border: none;
   border-radius: 4px;
   color: white;
-  font-size: 17px;
+  font-size: 16.5px;
   font-weight: 600;
   border-color: #57a957;
   cursor: pointer;
   font-family: Archivo Narrow, sans-serif;
-  letter-spacing: 0.095em;
+  letter-spacing: 0.25em;
 
   &:hover {
     opacity: 0.5;
@@ -46,7 +46,6 @@ export default {
   .button {
     padding: 18px 45px;
     height: 60px;
-    font-size: 20px;
   }
 }
 </style>
