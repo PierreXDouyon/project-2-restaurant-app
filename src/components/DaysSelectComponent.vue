@@ -47,9 +47,9 @@ export default {
 <style scoped lang="scss">
 .button-group {
   display: flex;
-  gap: 10px;
+  gap: 5px;
   margin: auto;
-  width: 600px;
+  width: 300px;
   margin-top: 30px;
   justify-content: center;
 }
@@ -66,5 +66,12 @@ export default {
   background-color: #007bff;
   color: white;
   border-color: #007bff;
+}
+
+@media (min-width: 576px) {
+  .button-group {
+    gap: 10px;
+    width: 600px;
+  }
 }
 </style>
