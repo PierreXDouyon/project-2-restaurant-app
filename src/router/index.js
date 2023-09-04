@@ -40,12 +40,12 @@ const routes = [
     component: RestaurantProfileView,
   },
   {
-    path: "/create-restaurant",
+    path: "/createrestaurant",
     name: "RestaurantCreateView",
     component: RestaurantCreateView,
   },
   {
-    path: "/edit-restaurant",
+    path: "/editrestaurant",
     name: "RestaurantEditView",
     component: RestaurantEditView,
   },
