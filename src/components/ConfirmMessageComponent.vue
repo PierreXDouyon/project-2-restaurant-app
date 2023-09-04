@@ -1,62 +1,25 @@
 <template>
-  <div class="auth-elements">
-    <TitleComponent title="Login" />
-    <InputTitleComponent name="User Name" />
-    <InputComponent v-on:data="getValue" />
-    <ButtonComponent name="LOGIN" @button-clicked="handleLoginClick" />
-    <ConfirmMessageComponent
-      v-if="iscalled"
-      :content="confirmstatus"
-      :status="status"
-    />
+  <div class="confirm-element" :class="['confirm', statusClass]">
+    {{ content }}
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import ButtonComponent from "@/components/ButtonComponent.vue";
-import InputTitleComponent from "@/components/InputTitleComponent.vue";
-import InputComponent from "@/components/InputComponent.vue";
-import TitleComponent from "@/components/TitleComponent.vue";
-import ConfirmMessageComponent from "@/components/ConfirmMessageComponent.vue";
-
 export default {
-  name: "AuthView",
-  components: {
-    ButtonComponent,
-    TitleComponent,
-    InputTitleComponent,
-    InputComponent,
-    ConfirmMessageComponent,
+  name: "ConfirmMessageComponent",
+  props: {
+    content: String,
+    status: Number,
   },
-  data: function () {
-    return {
-      confirmstatus: "checking",
-      status: 1,
-      iscalled: false,
-      inputVal: "",
-    };
-  },
-  methods: {
-    handleLoginClick() {
-      // Handle the button click event here
-      console.log("LOGIN button clicked!", this.inputVal);
-      this.iscalled = true;
-      if (this.status == 1) {
-        this.confirmstatus = "Login Successfully!";
-        let username = this.inputVal.toLowerCase();
-        if (username.includes("restaurant")) {
-          window.location.href = "/restaurantprofile";
-        } else {
-          window.location.href = "/memberprofile";
-        }
+  computed: {
+    statusClass() {
+      if (this.status === 1) {
+        return "success";
+      } else if (this.status === 2) {
+        return "failure";
       } else {
-        this.confirmstatus = "Login Failed, please try again.";
+        return ""; // No additional class
       }
-      // You can perform actions like sending API requests, updating data, etc.
-    },
-    getValue(event) {
-      this.inputVal = event;
     },
   },
 };

@@ -20,6 +20,8 @@ import InputComponent from "@/components/InputComponent.vue";
 import TitleComponent from "@/components/TitleComponent.vue";
 import ConfirmMessageComponent from "@/components/ConfirmMessageComponent.vue";
 import { loginUser } from "@/api/auth";
+import { useUserStore } from "@/store/user";
+import { useRouter } from "vue-router";
 
 export default {
   name: "AuthView",
@@ -29,6 +31,11 @@ export default {
     InputTitleComponent,
     InputComponent,
     ConfirmMessageComponent,
+  },
+  setup() {
+    const router = useRouter();
+    const userInfo = useUserStore();
+    return { userInfo, router };
   },
   data: function () {
     return {
@@ -55,16 +62,19 @@ export default {
           } else if (loginResult.data.result.status == 2) {
             this.confirmstatus = "Login Successfully!";
             this.status = 1;
+            console.log("--- success", loginResult.data.result.id);
+            this.userInfo.setUserId(loginResult.data.result.id);
             setTimeout(() => {
               if (loginResult.data.result.role == 2) {
-                window.location.href = "/restaurantprofile";
+                this.router.push({ name: "RestaurantProfileView" });
               } else {
-                window.location.href = "/memberprofile";
+                this.router.push({ name: "MemberProfile" });
               }
             }, 2000);
           } else if (loginResult.data.result.status == 3) {
             this.confirmstatus = "You are new user in this system!";
             this.status = 1;
+            this.userInfo.setUserId(loginResult.data.result.id);
             setTimeout(() => {
               if (loginResult.data.result.role == 2) {
                 window.location.href = "/restaurantprofile";

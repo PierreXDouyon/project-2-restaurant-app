@@ -6,6 +6,7 @@ import MemberRestaurantsView from "../views/MemberRestaurantsView.vue";
 import MemberReservationView from "../views/MemberReservationView.vue";
 import RestaurantProfileView from "../views/RestaurantProfileView.vue";
 import RestaurantCreateView from "../views/RestaurantCreateView.vue";
+import RestaurantEditView from "../views/RestaurantEditView.vue";
 
 const routes = [
   {
@@ -39,9 +40,14 @@ const routes = [
     component: RestaurantProfileView,
   },
   {
-    path: "/restaurantcreate",
+    path: "/create-restaurant",
     name: "RestaurantCreateView",
     component: RestaurantCreateView,
+  },
+  {
+    path: "/edit-restaurant",
+    name: "RestaurantEditView",
+    component: RestaurantEditView,
   },
 ];
 
