@@ -1,5 +1,5 @@
 <template>
-  <div class="restaurant-profile-elements">
+  <div class="restaurant-profile-elements" :key="forceKey">
     <RestaurantHeaderComponent />
     <TitleComponent title="Restaurant Profile" />
     <div class="profile-delete">
@@ -12,20 +12,27 @@
         @button-clicked="handleDeleteProfile"
       />
     </div>
-    <UserRestaurantsListComponent />
+    <UserRestaurantsListComponent
+      v-if="restaurants.length"
+      :restaruntArr="restaurants"
+      v-on:delete-userRestaurant="DeleteRestaurant"
+    />
     <FooterComponent />
-    <ScrollUpComponent />
   </div>
 </template>
 
 <script>
+// @ is an alias to /src
 import TitleComponent from "@/components/TitleComponent.vue";
 import RestaurantHeaderComponent from "@/components/RestaurantHeaderComponent.vue";
 import FooterComponent from "@/components/FooterComponent.vue";
 import ButtonComponent from "@/components/ButtonComponent.vue";
 import UserRestaurantsListComponent from "@/components/UserRestaurantsListComponent.vue";
 import DelButtonComponent from "@/components/DelButtonComponent.vue";
-import ScrollUpComponent from "@/components/ScrollUpComponent.vue";
+import { getUserRestaurnts, deleteRestaurnt } from "@/api/restaurant";
+import { deletetProfile } from "@/api/auth";
+import { useUserStore } from "@/store/user";
+import { useRouter } from "vue-router";
 
 export default {
   name: "RestaurantProfileView",
@@ -36,21 +43,28 @@ export default {
     UserRestaurantsListComponent,
     ButtonComponent,
     DelButtonComponent,
-    ScrollUpComponent,
+  },
+  setup() {
+    const userInfo = useUserStore();
+    const router = useRouter();
+    return { userInfo, router };
   },
   data: function () {
     return {
       days: ["M", "T", "W", "TH", "F", "S", "SN"],
       restaurantName: "",
+      forceKey: 0,
       categoryName: "",
       seat: 1,
       categoryOptions: [
         { label: "Italian Food", value: "Italian Food" },
         { label: "French Food", value: "French Food" },
         { label: "Asian Food", value: "Asian Food" },
-        { label: "Mid. Eastern Food", value: "Mid. Eastern Food" },
+        { label: "Eastern Food", value: "Eastern Food" },
       ],
       selectedButtonValues: [],
+      restaurants: [],
+      userID: this.userInfo.userId,
     };
   },
   methods: {
@@ -58,18 +72,43 @@ export default {
       this.restaurantName = event;
     },
     handleCreateRestaurant() {
-      window.location.href = "/create-restaurant";
+      this.router.push({ name: "RestaurantCreateView" });
     },
-    handleClearProfile() {
-      console.log("--- clearing the profile");
+    async DeleteRestaurant(restaurantId) {
+      if (confirm("Are you deleting the restaurant?")) {
+        console.log("------id ", restaurantId);
+        let deleteObj = { _id: restaurantId };
+        let deleted_restaurant = await deleteRestaurnt(deleteObj);
+        if (deleted_restaurant.data.result.status == 4) {
+          alert("Deleted the restaurant successfully!");
+          this.getUserRestaurantsLst();
+          this.forceKey++;
+        }
+      }
     },
-    handleDeleteProfile() {
-      console.log("--- redireting the profile");
-      window.location.href = "/login";
+    async handleDeleteProfile() {
+      if (confirm("Are you deleting the profile?")) {
+        let deletedUser = { id: this.userID };
+        const deleted_profile = await deletetProfile(deletedUser);
+        if (deleted_profile.data.result.status == 4) {
+          alert("Deleted the profile successfully!");
+        }
+        this.userInfo.setUserId("");
+        this.userInfo.setDeletedProfile(true);
+        this.router.push({ name: "home" });
+      }
     },
     getCategoryName(event) {
       this.categoryName = event;
     },
+    async getUserRestaurantsLst() {
+      let userobj = { userId: this.userID };
+      const restaurantLst = await getUserRestaurnts(userobj);
+      this.restaurants = restaurantLst.data.results.results;
+    },
+  },
+  created() {
+    this.getUserRestaurantsLst();
   },
 };
 </script>
