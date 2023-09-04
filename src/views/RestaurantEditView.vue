@@ -1,0 +1,215 @@
+<template>
+  <div class="restaurant-profile-elements">
+    <RestaurantHeaderComponent />
+    <TitleComponent title="Edit Restaurant" />
+    <InputTitleComponent name="Restaurant Name" />
+    <InputComponent :value="restaurantName" v-on:data="getRestaurantName" />
+    <InputTitleComponent name="Please Upload the featured Restaurant Image" />
+    <ImageUploaderComponent
+      :src="imageValue"
+      v-on:getImage="handleImageUpload"
+    />
+    <InputTitleComponent name="Category" />
+    <CategoryCheckBoxComponent
+      :value="categories"
+      :buttons="categoryOptions"
+      v-on:CheckedCategory="getCategories"
+    />
+    <InputTitleComponent name="Seats Available" />
+    <SelectNumberComponent
+      :value="seats"
+      :step="2"
+      :maxnumber="20"
+      v-on:SelectedNum="getSeats"
+    />
+    <InputTitleComponent name="Days Open" />
+    <DaysSelectComponent
+      :value="activeDays"
+      :buttons="days"
+      v-on:getDays="getAvailableDays"
+    />
+    <ConfirmMessageComponent
+      v-if="iscalled"
+      :content="confirmstatus"
+      :status="status"
+    />
+    <div class="restaurant-profile-actions">
+      <ButtonComponent name="Save" @button-clicked="handleUpdateRestaurant" />
+    </div>
+    <FooterComponent />
+  </div>
+</template>
+
+<script>
+// @ is an alias to /src
+import TitleComponent from "@/components/TitleComponent.vue";
+import InputTitleComponent from "@/components/InputTitleComponent.vue";
+import InputComponent from "@/components/InputComponent.vue";
+import RestaurantHeaderComponent from "@/components/RestaurantHeaderComponent.vue";
+import FooterComponent from "@/components/FooterComponent.vue";
+import ButtonComponent from "@/components/ButtonComponent.vue";
+import CategoryCheckBoxComponent from "@/components/CategoryCheckBoxComponent.vue";
+import SelectNumberComponent from "@/components/SelectNumberComponent.vue";
+import DaysSelectComponent from "@/components/DaysSelectComponent.vue";
+import ImageUploaderComponent from "@/components/ImageUploaderComponent.vue";
+import ConfirmMessageComponent from "@/components/ConfirmMessageComponent.vue";
+import { EditRestaurnt } from "@/api/restaurant";
+import { useUserStore } from "@/store/user";
+import { useRestaurantStore } from "@/store/restaurant";
+import { useRouter } from "vue-router";
+
+export default {
+  name: "RestaurantEditView",
+  components: {
+    TitleComponent,
+    RestaurantHeaderComponent,
+    FooterComponent,
+    InputComponent,
+    InputTitleComponent,
+    ButtonComponent,
+    CategoryCheckBoxComponent,
+    SelectNumberComponent,
+    DaysSelectComponent,
+    ImageUploaderComponent,
+    ConfirmMessageComponent,
+  },
+  setup() {
+    const userInfo = useUserStore();
+    const restaurantInfo = useRestaurantStore();
+    const router = useRouter();
+    return { userInfo, router, restaurantInfo };
+  },
+  data: function () {
+    return {
+      iscalled: false,
+      days: [
+        { label: "M", value: "monday" },
+        { label: "T", value: "tuesday" },
+        { label: "W", value: "wendnesday" },
+        { label: "TH", value: "thursday" },
+        { label: "F", value: "friday" },
+        { label: "S", value: "saturday" },
+        { label: "SN", value: "sunday" },
+      ],
+      confirmstatus: "",
+      status: 1,
+      restaurantName: "",
+      categories: [],
+      userID: this.userInfo.userId,
+      imageValue: "",
+      activeDays: [],
+      seats: 2,
+      categoryOptions: [
+        { label: "Italian Food", value: "Italian Food" },
+        { label: "French Food", value: "French Food" },
+        { label: "Asian Food", value: "Asian Food" },
+        { label: "Eastern Food", value: "Eastern Food" },
+      ],
+    };
+  },
+  methods: {
+    handleImageUpload(imageData) {
+      this.imageValue = imageData;
+    },
+    getRestaurantName(event) {
+      this.restaurantName = event;
+    },
+    async handleUpdateRestaurant() {
+      let updateRestaurantObj = {
+        name: this.restaurantName,
+        restaurantImg: this.imageValue,
+        categories: this.categories,
+        seats: this.seats,
+        days: this.activeDays,
+        userId: this.userID,
+        _id: this.restaurantInfo.restaurant._id,
+      };
+      console.log("-- new restaurant");
+      console.log(updateRestaurantObj);
+
+      try {
+        const is_updated = await EditRestaurnt(updateRestaurantObj);
+        console.log("-- is updated");
+        console.log(is_updated);
+        this.iscalled = false;
+        if (is_updated.success && is_updated.data.result.status == 3) {
+          this.iscalled = true;
+          this.confirmstatus = "Updated a Restaurant successfully!";
+          this.status = 1;
+          setTimeout(() => {
+            this.router.push({ name: "RestaurantProfileView" });
+          }, 2000);
+        }
+      } catch (error) {
+        console.log("Error: ", error);
+      }
+    },
+    getAvailableDays(values) {
+      this.activeDays = values;
+    },
+    getSeats(values) {
+      this.seats = values;
+    },
+    getCategories(value) {
+      this.categories = value;
+    },
+    getRestaurantInfo() {
+      this.restaurantName = this.restaurantInfo.restaurant.name;
+      this.imageValue = this.restaurantInfo.restaurant.restaurantImg;
+      this.categories = this.restaurantInfo.restaurant.categories;
+      this.seats = this.restaurantInfo.restaurant.seats;
+      this.activeDays = this.restaurantInfo.restaurant.days;
+    },
+  },
+  created() {
+    console.log("---restaurant information in details");
+    console.log(this.restaurantInfo.restaurant);
+    this.getRestaurantInfo();
+  },
+};
+</script>
+
+<style scoped lang="scss">
+.restaurant-profile-actions {
+  max-width: 400px;
+  margin: auto;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  display: flex;
+  justify-content: center;
+}
+.profile-delete {
+  margin-top: 30px;
+}
+.days-open-element {
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.member-profile-elements {
+  margin-top: 0%;
+}
+.member-profile-elements .title-element {
+  margin-top: 2%;
+}
+.days-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid;
+  background: pink;
+  border-radius: 4px;
+}
+
+.days-item::hover {
+  background: white;
+  color: black;
+}
+
+.auth-elements .confirm-element {
+  margin-top: 20px;
+}
+</style>
