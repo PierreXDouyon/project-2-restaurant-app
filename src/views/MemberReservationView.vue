@@ -2,24 +2,24 @@
   <div class="member-restaurants-elements">
     <MemberHeaderComponent />
     <TitleComponent title="Book Reservation" />
-    <h4>RESTAURANT NAME : Restaurant1</h4>
-    <h4>MAXIMUM SEATING : 12</h4>
+    <h4>Restaurant Name : Restaurant1</h4>
+    <h4>Seats Available : 12, 14</h4>
     <ConfirmMessageComponent :content="confirmstatus" :status="status" />
-    <h4>DATE</h4>
+    <h4>Date</h4>
     <div class="select-reservation-date">
       <div class="select-reservation-date-element">
         <InputTitleComponent name="Choose a date" />
-        <SelectNumberComponent v-model="seat" :step="1" :maxnumber="31" />
+        <SelectNumberComponent :value="date" :step="1" :maxnumber="31" />
       </div>
       <div class="select-reservation-month-element">
         <InputTitleComponent name="Choose a month" />
-        <SelectNumberComponent v-model="seat" :step="1" :maxnumber="12" />
+        <SelectNumberComponent :value="month" :step="1" :maxnumber="12" />
       </div>
     </div>
     <div class="reservation-now-actions">
       <div class="select-seat-element">
-        <InputTitleComponent name="Select seats" />
-        <SelectNumberComponent v-model="seat" :step="2" :maxnumber="100" />
+        <InputTitleComponent name="Choose a seat" />
+        <SelectNumberComponent :value="seats" :step="2" :maxnumber="100" />
       </div>
       <ButtonView name="Reserve Now" @button-clicked="handleReserveNow" />
     </div>
@@ -36,6 +36,10 @@ import FooterComponent from "@/components/FooterComponent.vue";
 import ButtonView from "@/components/ButtonComponent.vue";
 import SelectNumberComponent from "@/components/SelectNumberComponent.vue";
 import InputTitleComponent from "@/components/InputTitleComponent.vue";
+import { useRestaurantStore } from "@/store/restaurant";
+import { useReservationStore } from "@/store/reservation";
+import { useRouter } from "vue-router";
+import { useUserStore } from "@/store/user";
 
 export default {
   name: "MemberReservationView",
@@ -48,9 +52,19 @@ export default {
     SelectNumberComponent,
     InputTitleComponent,
   },
+  setup() {
+    const useRestaurantInfo = useRestaurantStore();
+    const userReservationInfo = useReservationStore();
+    const router = useRouter();
+    const userInfo = useUserStore();
+    return { useRestaurantInfo, router, userInfo, userReservationInfo };
+  },
   data: function () {
     return {
       status: 1,
+      date: 1,
+      month: 1,
+      seats: 2,
       confirmstatus:
         "Please confirm. Book Date : 2023-08-29, Seats are 12, 14.",
     };
@@ -59,6 +73,10 @@ export default {
     handleReserveNow() {
       console.log("--reserve now");
     },
+  },
+  created() {
+    console.log("---reservation params------");
+    console.log(this.useRestaurantInfo.restaurant);
   },
 };
 </script>
