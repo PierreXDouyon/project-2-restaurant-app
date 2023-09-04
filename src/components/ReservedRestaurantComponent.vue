@@ -1,9 +1,9 @@
 <template>
   <div class="reserved-elements">
     <h2>Current Reservation</h2>
-    <p class="reservation-name">Restaurant Name :{{ name }}</p>
-    <p class="reservation-date">Date :{{ date }}</p>
-    <p class="reservation-seats">Seats :{{ seats }}</p>
+    <p class="reservation-name">Restaurant Name : {{ name }}</p>
+    <p class="reservation-date">Date : {{ date }}</p>
+    <p class="reservation-seats">Seats : {{ seats }}</p>
     <DelButtonComponent name="Delete" @button-clicked="DeleteReserved" />
   </div>
 </template>
