@@ -1,11 +1,9 @@
 <template>
   <div class="restaurant-details-elements">
-    <h2>{{ name }}</h2>
-    <img :src="src" />
-    <p class="reservation-date">{{ categoryName }}</p>
-    <div class="restaurant-actions">
-      <ButtonComponent name="Edit" @button-clicked="Edit" />
-      <DelButtonComponent name="Delete" @button-clicked="Delete" />
+    <div class="detail-object">
+      <h2>{{ name }}</h2>
+      <img :src="src" />
+      <ButtonComponent name="Book Reservation" @button-clicked="BookReserved" />
     </div>
   </div>
 </template>
@@ -13,26 +11,41 @@
 <script>
 // @ is an alias to /src
 import ButtonComponent from "@/components/ButtonComponent.vue";
-import DelButtonComponent from "@/components/DelButtonComponent.vue";
+import { useRestaurantStore } from "@/store/restaurant";
+import { useRouter } from "vue-router";
 
 export default {
   name: "RestaurantDetailsComponent",
   props: {
     name: String,
-    categoryName: String,
+    categoryName: Array,
+    userId: String,
+    days: Array,
     src: String,
     id: String,
+    seats: Number,
+  },
+  setup() {
+    const useRestaurantInfo = useRestaurantStore();
+    const router = useRouter();
+    return { useRestaurantInfo, router };
   },
   components: {
     ButtonComponent,
-    DelButtonComponent,
   },
   methods: {
-    Edit() {
-      // window.location.href = "/bookreservation";
-    },
-    Delete() {
-      // window.location.href = "/bookreservation";
+    BookReserved() {
+      let restaurantObj = {
+        _id: this.id,
+        name: this.name,
+        restaurantImg: this.src,
+        categories: this.categoryName,
+        seats: this.seats,
+        days: this.days,
+        userId: this.userId,
+      };
+      this.useRestaurantInfo.setRestauratInfo(restaurantObj);
+      this.router.push({ name: "MemberReservation" });
     },
   },
 };
