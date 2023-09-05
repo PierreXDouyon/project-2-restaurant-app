@@ -9,7 +9,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import DelButtonComponent from "@/components/DelButtonComponent.vue";
 
 export default {

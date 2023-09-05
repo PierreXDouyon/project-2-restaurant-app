@@ -41,7 +41,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import TitleComponent from "@/components/TitleComponent.vue";
 import InputTitleComponent from "@/components/InputTitleComponent.vue";
 import InputComponent from "@/components/InputComponent.vue";

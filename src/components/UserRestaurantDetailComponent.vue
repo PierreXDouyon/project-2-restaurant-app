@@ -21,7 +21,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import ButtonComponent from "@/components/ButtonComponent.vue";
 import DelButtonComponent from "@/components/DelButtonComponent.vue";
 import { useRestaurantStore } from "@/store/restaurant";

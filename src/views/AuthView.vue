@@ -13,7 +13,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import ButtonComponent from "@/components/ButtonComponent.vue";
 import InputTitleComponent from "@/components/InputTitleComponent.vue";
 import InputComponent from "@/components/InputComponent.vue";

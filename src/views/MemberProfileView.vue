@@ -21,7 +21,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import TitleComponent from "@/components/TitleComponent.vue";
 import MemberHeaderComponent from "@/components/MemberHeaderComponent.vue";
 import ReservedRestaurantComponent from "@/components/ReservedRestaurantComponent.vue";

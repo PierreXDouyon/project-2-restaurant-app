@@ -49,7 +49,7 @@ export default {
 
 <style scoped lang="scss">
 .list-container {
-  margin-top: 2%;
+  margin-top: 8%;
   padding-bottom: 40px;
   .restaurant-list-elements {
     margin-top: 2% !important;
@@ -76,13 +76,13 @@ export default {
     margin: 3%;
   }
 }
-@media (min-width: 576px) {
-  .restaurant-list-elements {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+// @media (min-width: 576px) {
+//   .restaurant-list-elements {
+//     grid-template-columns: repeat(2, 1fr);
+//   }
+// }
 
-@media (min-width: 1100px) {
+@media (min-width: 1200px) {
   .restaurant-list-elements {
     grid-template-columns: repeat(3, 1fr);
   }

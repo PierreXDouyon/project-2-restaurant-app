@@ -93,7 +93,7 @@ export default {
 
 <style scoped lang="scss">
 .restaurant-list-elements {
-  margin-top: 2% !important;
+  margin-top: 8% !important;
   max-width: 1200px;
   width: 90%;
   display: grid;
@@ -117,7 +117,7 @@ export default {
   margin: 3%;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 768px) {
   .restaurant-list-elements {
     grid-template-columns: repeat(2, 1fr);
   }

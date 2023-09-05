@@ -5,7 +5,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import ButtonComponent from "@/components/ButtonComponent.vue";
 import { singoutUser } from "@/api/auth";
 import { useUserStore } from "@/store/user";

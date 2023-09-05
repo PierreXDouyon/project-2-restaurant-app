@@ -44,7 +44,7 @@ export default {
 
 @media (min-width: 576px) {
   .button {
-    padding: 18px 45px;
+    padding: 0 45px;
     height: 60px;
   }
 }
