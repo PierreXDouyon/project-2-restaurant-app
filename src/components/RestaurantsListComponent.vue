@@ -18,16 +18,16 @@
         />
       </div>
     </div>
-    <div class="view-more-action">
+    <!-- <div class="view-more-action">
       <ButtonComponent name="VIEW MORE RESTAURANTS" />
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import RestaurantDetailComponent from "@/components/RestaurantDetailComponent.vue";
-import ButtonComponent from "@/components/ButtonComponent.vue";
+// import ButtonComponent from "@/components/ButtonComponent.vue";
 import CategorySelectComponent from "@/components/CategorySelectComponent.vue";
 import { getAllRestaurnts } from "@/api/restaurant";
 import { useUserStore } from "@/store/user";
@@ -37,7 +37,7 @@ export default {
   name: "RestaurantsListComponent",
   components: {
     RestaurantDetailComponent,
-    ButtonComponent,
+    // ButtonComponent,
     CategorySelectComponent,
   },
   setup() {

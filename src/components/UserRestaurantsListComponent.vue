@@ -14,22 +14,25 @@
         />
       </div>
     </div>
-    <div class="view-more-action">
+    <!-- <div class="view-more-action">
       <ButtonComponent name="VIEW MORE RESTAURANTS" />
-    </div>
+    </div> -->
+    <ScrollUpComponent />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import UserRestaurantDetailComponent from "@/components/UserRestaurantDetailComponent.vue";
-import ButtonComponent from "@/components/ButtonComponent.vue";
+// import ButtonComponent from "@/components/ButtonComponent.vue";
+import ScrollUpComponent from "@/components/ScrollUpComponent.vue";
 
 export default {
   name: "UserRestaurantsListComponent",
   components: {
     UserRestaurantDetailComponent,
-    ButtonComponent,
+    ScrollUpComponent,
+    // ButtonComponent,
   },
   props: {
     restaruntArr: Array,
