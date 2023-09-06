@@ -28,11 +28,6 @@
       :buttons="days"
       v-on:getDays="getAvailableDays"
     />
-    <ConfirmMessageComponent
-      v-if="iscalled"
-      :content="confirmstatus"
-      :status="status"
-    />
     <div class="restaurant-profile-actions">
       <ButtonComponent name="SAVE" @button-clicked="handleCreateRestaurant" />
     </div>
@@ -51,8 +46,8 @@ import CategoryCheckBoxComponent from "@/components/CategoryCheckBoxComponent.vu
 import SelectNumberComponent from "@/components/SelectNumberComponent.vue";
 import DaysSelectComponent from "@/components/DaysSelectComponent.vue";
 import ImageUploaderComponent from "@/components/ImageUploaderComponent.vue";
-import ConfirmMessageComponent from "@/components/ConfirmMessageComponent.vue";
 import { createRestaurnt } from "@/api/restaurant";
+import { useRestaurantStore } from "@/store/restaurant";
 import { useUserStore } from "@/store/user";
 import { useRouter } from "vue-router";
 
@@ -69,16 +64,15 @@ export default {
     SelectNumberComponent,
     DaysSelectComponent,
     ImageUploaderComponent,
-    ConfirmMessageComponent,
   },
   setup() {
     const userInfo = useUserStore();
+    const useRestaurantInfo = useRestaurantStore();
     const router = useRouter();
-    return { userInfo, router };
+    return { userInfo, router, useRestaurantInfo };
   },
   data: function () {
     return {
-      iscalled: false,
       days: [
         { label: "M", value: "monday" },
         { label: "T", value: "tuesday" },
@@ -88,7 +82,6 @@ export default {
         { label: "S", value: "saturday" },
         { label: "SN", value: "sunday" },
       ],
-      confirmstatus: "",
       status: 1,
       restaurantName: "",
       categories: [],
@@ -124,11 +117,9 @@ export default {
       };
       try {
         const is_created = await createRestaurnt(newRestaurantObj);
-        this.iscalled = false;
         if (is_created.success && is_created.data.result.status == 2) {
-          this.iscalled = true;
-          this.confirmstatus = "Created a new Restaurant successfully!";
-          this.status = 1;
+          this.useRestaurantInfo.setStoreConfirm(true);
+          this.useRestaurantInfo.setCreateConfirm(true);
           setTimeout(() => {
             this.router.push({ name: "RestaurantProfileView" });
           }, 2000);
