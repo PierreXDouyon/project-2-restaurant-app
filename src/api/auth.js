@@ -1,5 +1,5 @@
-// const apiUrl = ""; // empty string to run on codespaces
-const apiUrl = "http://localhost:3000";
+const apiUrl = "https://bug-free-zebra-j6j6g794w6xfq7x-3000.app.github.dev"; // empty string to run on codespaces
+// const apiUrl = "http://localhost:3000";
 
 // Function to login user data
 export async function loginUser(username) {
