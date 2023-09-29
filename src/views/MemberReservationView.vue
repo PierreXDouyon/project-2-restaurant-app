@@ -329,9 +329,4 @@ export default {
   }
 }
 
-@media (min-width: 768px) {
-  .select-seat-element {
-    width: 61% !important;
-  }
-}
 </style>
