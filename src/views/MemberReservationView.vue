@@ -24,6 +24,7 @@
         <InputTitleComponent name="Choose a date" />
         <SelectNumberComponent
           v-on:SelectedNum="handleChoosedate"
+          type="date"
           :value="date"
           :step="1"
           :maxnumber="31"
@@ -33,6 +34,7 @@
         <InputTitleComponent name="Choose a month" />
         <SelectNumberComponent
           v-on:SelectedNum="handleChoosemonth"
+          type="month"
           :value="month"
           :step="1"
           :maxnumber="12"
@@ -44,6 +46,7 @@
       <InputTitleComponent name="Choose a seat" />
       <SelectNumberComponent
         v-on:SelectedNum="handleChooseseat"
+        type="seat"
         :value="seats"
         :step="2"
         :maxnumber="useRestaurantInfo.restaurant.seats"

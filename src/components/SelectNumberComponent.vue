@@ -26,6 +26,10 @@ export default {
       type: Number,
       required: true,
     },
+    type: {
+      type: String,
+      required: true,
+    },
     step: {
       type: Number,
       default: 1,
@@ -38,7 +42,22 @@ export default {
   },
   methods: {
     decreaseValue() {
-      this.localValue -= this.step;
+      const today = new Date();
+      const currentMonth = today.getMonth() + 1;
+      const currentDate = today.getDate();
+      const updateVal = this.localValue - this.step;
+      if (this.type == "date") {
+        if (updateVal < currentDate) {
+          console.log("?????");
+          return;
+        }
+      } else if (this.type == "month") {
+        if (updateVal < currentMonth) {
+          console.log("11111");
+          return;
+        }
+      }
+      this.localValue = updateVal;
       this.emitUpdatedValue();
     },
     increaseValue() {

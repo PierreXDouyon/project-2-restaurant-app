@@ -17,6 +17,7 @@
     />
     <InputTitleComponent name="Seats Available" />
     <SelectNumberComponent
+      type="seat"
       :value="seats"
       :step="2"
       :maxnumber="20"
